@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Portfolio</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="projects.css">
-  <link rel="stylesheet" href="stars.css">
+  <title>Portfolio - Projects</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/projects.css">
+  <link rel="stylesheet" href="css/stars.css">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="2f2c2594-a255-4fc8-821e-ed2280bf58ba.png" />
+  <link rel="icon" type="image/png" href="img/2f2c2594-a255-4fc8-821e-ed2280bf58ba.png" />
 </head>
 <body>
 <canvas id="stars"></canvas>
@@ -24,34 +24,109 @@
       <a href="links.html">🔗 Links</a>
     </div>
   </nav>
-
-  <!-- 💼 Карточка проекта -->
-  <div class="project-card">
-    <img src="funpay.png" alt="FunPay Project" class="project-image">
-    <h3 class="project-title">FunPay</h3>
-
-    <div class="project-description">
-  <h2>💬 Project Description</h2>
-  <p>
-    On the <strong>FunPay</strong> platform, I offer high-quality services related to
-    <strong>in-game donations</strong> and <strong>account rentals</strong>.
-  </p>
-  <ul>
-    <li>🔹 Donation services for popular games</li>
-    <li>🔹 Game account rentals</li>
-    <li>🔹 Fast order processing and customer support</li>
-  </ul>
-</div>
-
-    <div class="btn-container">
-      <a href="https://funpay.com/users/9038842/" class="clean-button" target="_blank">
-        🔗 Go to FunPay
-      </a>
-    </div>
+<section class="projects-section">
+  <div class="projects-header">
+    <h2 class="projects-title">My Projects</h2>
   </div>
 
-  <script src="projects.js"></script>
-  <script src="stars.js"></script>
-  <script src="javascript.js"></script>
+  <div class="projects-grid">
+    <!-- Card 1 -->
+     <article class="p-card">
+      <div class="p-card__media">
+        <img src="img/nda.png" alt="Project preview">
+      </div>
+      <div class="p-card__body">
+        <h3 class="p-card__title">NDA Project (archive)</h3>
+        <ul class="p-card__tags">
+          <li class="tag">Rust</li>
+          <li class="tag">Node.js</li>
+          <li class="tag">Kotlin</li>
+        </ul>
+        <p class="p-card__text">NDA Project (archive) — R&D across blockchain and iGaming: tokenomics design, risk models, and smart-contract prototypes. Details remain confidential under NDA.</p>
+        <ul class="p-card__list">
+          <li>⛓️ Tokenomics design</li>
+          <li>🎰 Mathematical models for casino mechanics and risk management</li>
+          <li>⚙️ Prototypes of smart contracts and real-time services</li>
+        </ul>
+      </div>
+      <div class="p-card__actions">
+        <button class="btn-outline" style="font-family: inherit;" onclick="showToast('Information under NDA', 'success')">More Info</button>
+      </div>
+    </article>
+    <!-- Card 2 -->
+    <article class="p-card">
+      <div class="p-card__media">
+        <img src="img/mkdev.png" alt="Project preview">
+      </div>
+      <div class="p-card__body">
+        <h3 class="p-card__title">MK • DΞV Website</h3>
+        <ul class="p-card__tags">
+          <li class="tag">JavaScript</li>
+          <li class="tag">CSS</li>
+          <li class="tag">JavaScript</li>
+          <li class="tag">SCSS</li>
+        </ul>
+        <p class="p-card__text">Personal portfolio website where I collect my achievements, showcase projects, and briefly share my development journey. It’s my personal business card.</p>
+        <ul class="p-card__list">
+          <li>🧩 Projects: my role, short description, and links.</li>
+          <li>⭐ Achievements & metrics: results, ratings, and notable milestones.</li>
+          <li>🔗 Contacts & links: GitHub, Telegram, and other profiles in one place.</li>
+        </ul>
+      </div>
+      <div class="p-card__actions">
+        <a class="btn-glow" href="index.html" target="_blank" rel="noopener">🔗 Go To MK • DΞV</a>
+        <a class="btn-outline" href="projects.html" target="_blank" rel="noopener">Description</a>
+      </div>
+    </article>
+    <!-- Card 3 -->
+    <article class="p-card">
+      <div class="p-card__media">
+        <img src="img/funpay.png" alt="Project preview">
+      </div>
+      <div class="p-card__body">
+        <h3 class="p-card__title">FunPay</h3>
+        <ul class="p-card__tags">
+          <li class="tag">💬 Project Description</li>
+        </ul>
+        <p class="p-card__text">On the FunPay platform, I offer high-quality services related to in-game donations and account rentals.</p>
+        <ul class="p-card__list">
+          <li>⚡ Full automated services</li>
+          <li>🛡️ Game account rentals</li>
+          <li>📈 Donation services for popular games</li>
+        </ul>
+      </div>
+      <div class="p-card__actions">
+        <a class="btn-glow" href="https://funpay.com/users/9038842/" target="_blank" rel="noopener">🔗 Go To FunPay</a>
+        <button class="btn-outline" style="font-family: inherit;" onclick="showToast('Not available at the moment', 'success')">More Info</button>
+      </div>
+    </article>
+    <!-- Card 4 -->
+    <article class="p-card">
+      <div class="p-card__media">
+        <img src="img/playerok.png" alt="Project preview">
+      </div>
+      <div class="p-card__body">
+        <h3 class="p-card__title">PlayerOk</h3>
+        <ul class="p-card__tags">
+          <li class="tag">💬 Project Description</li>
+        </ul>
+        <p class="p-card__text">PlayerOk — archived</p>
+        <ul class="p-card__list">
+          <li>🔐 Former seller on PlayerOk. Sales are inactive; page remains for portfolio/history.</li>
+          <li>🧠 EX Full automated service</li>
+        </ul>
+      </div>
+      <div class="p-card__actions">
+        <a class="btn-glow" href="https://playerok.com/profile/MaksFortniteTR/products" target="_blank" rel="noopener">🔗 Go To PlayerOk</a>
+        <button class="btn-outline" style="font-family: inherit;" onclick="showToast('Not available at the moment', 'success')">More Info</button>
+      </div>
+    </article>
+
+    
+  </div>
+</section>
+  <script src="js/projects.js"></script>
+  <script src="js/stars.js"></script>
+  <script src="js/javascript.js"></script>
 </body>
 </html>
