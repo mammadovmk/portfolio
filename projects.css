@@ -1,89 +1,283 @@
-/* ==== КАРТОЧКА ПРОЕКТА ==== */
-.project-card {
-  background-color: rgba(0, 0, 0, 0.5); 
-  border-radius: 18px;
-  padding: 30px;
-  margin: 40px auto;
-  max-width: 800px;
-  box-shadow: 0 0 20px rgba(102, 255, 204, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
+:root{
+  /* Цвета */
+  --color-text:   #eaf2ff;
+  --color-muted:  #9bb0c9;
+  --color-edge:   #34f5c5;     /* обводки/свечение */
+  --color-accent: #6ff0ff;     /* заголовки/кнопки */
+
+  /* Панель карточки (полупрозрачная) */
+  --panel-bg: rgba(12,18,30, .75);
+
+  /* Радиус и зазоры */
+  --radius: 16px;
+  --gap:    24px;              /* расстояние между карточками */
+
+  /* Тени (удобно править в одном месте) */
+  --shadow-base: 0 10px 30px rgba(0,0,0,.35);
+  --shadow-edge: 0 0 40px rgba(52,245,197,.16);
+  --shadow-hover:0 14px 36px rgba(0,0,0,.45);
+  --shadow-glow: 0 0 60px rgba(52,245,197,.28);
 }
 
-.project-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 0 30px rgba(102, 255, 204, 0.15);
+/* ---------- Section & grid ---------- */
+.projects-section{
+  color: var(--color-text);
+  font-family: inherit;              /* наследуем шрифт сайта */
 }
 
-.project-image {
-  width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-  margin-bottom: 20px;
+.projects-grid{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--gap);
 }
 
-.project-title {
-  font-size: 1.8rem;
-  font-weight: 600;
-  text-align: center;
-  color: #66ffcc;
-  font-family: 'Orbitron', sans-serif;
-  margin-bottom: 10px;
+/* 2 столбца на планшете */
+@media (min-width: 720px){
+  .projects-grid{ grid-template-columns: repeat(2, 1fr); }
 }
 
-.project-description {
-  background-color: rgba(0, 0, 0, 0.5); 
-  border: 2px solid #66ffcc;
-  border-radius: 12px;
-  padding: 30px;
-  margin-top: 40px;
-  box-shadow: 0 0 20px rgba(102, 255, 204, 0.08);
-  color: #e0e0e0;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: left;
-  line-height: 1.6;
+/* 3 столбца на десктопе, чуть больше воздуха */
+@media (min-width: 40000px){
+  .projects-grid{
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8vh;
+  }
 }
 
-.project-description h2 {
-  color: #66ffcc;
-  margin-bottom: 20px;
-  font-size: 1.6rem;
-  text-align: center;
-}
-
-.project-description ul {
-  padding-left: 20px;
-  margin: 15px 0;
-}
-
-.project-description ul li {
-  margin-bottom: 10px;
-}
-
-/* ==== КНОПКА ==== */
-.btn-container {
+/* ---------- Card ---------- */
+.p-card{
+  /* layout */
   display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  /* visuals */
+  background:
+    linear-gradient(180deg, rgba(102, 255, 204, 0.1), rgba(82, 253, 196, 0.1)),
+    var(--panel-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-base), var(--shadow-edge);
+  backdrop-filter: blur(6px);
+
+  /* interaction */
+  transition:
+    transform    .20s ease,
+    box-shadow   .20s ease,
+    border-color .20s ease;
+}
+
+.p-card:hover{
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover), var(--shadow-glow);
+}
+
+/* ---------- Media (изображение) ---------- */
+.p-card__media{
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(52,245,197,.25);
+}
+
+.p-card__media img{
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  transition: transform .35s ease;
+}
+
+.p-card:hover .p-card__media img{
+  transform: scale(1.04);
+}
+
+/* ---------- Body (контент и отступы) ---------- */
+.p-card__body{
+  padding: 32px 32px 24px;    /* top/right/left больше, низ чуть меньше */
+}
+
+/* Заголовок карточки */
+.p-card__title{
+  margin: 0 0 10px;
+  font: 700 20px/1.25 inherit;    /* вес/размер/межстрочный/наследуем семейство */
+  color: var(--color-accent);
+}
+
+/* Краткий текст */
+.p-card__text{
+  margin: 14px 0;
+  line-height: 1.55;
+}
+
+/* Маркированный список фич */
+.p-card__list{
+  margin: 14px 0 0;
+  padding-left: 18px;
+  color: var(--color-muted);
+}
+.p-card__list li{ margin: .34rem 0; }
+
+/* ---------- Tags ---------- */
+.p-card__tags{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 18px;
+  padding: 0;
+  list-style: none;
+}
+
+.tag{
+  padding: .42rem .7rem;
+  border: 1px solid var(--color-edge);
+  border-radius: 999px;
+
+  font-size: 13px;
+  color: var(--color-text);
+  background: rgba(255,255,255,.06);
+  box-shadow: 0 0 10px rgba(52,245,197,.18);
+}
+
+/* ---------- Actions (кнопки) ---------- */
+.p-card__actions{
+  display: flex;
+  gap: 12px;
+  padding: 24px 32px 32px;
+  margin-top: auto;                 /* прижимает блок к низу карточки */
+}
+
+.btn-glow,
+.btn-outline{
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
-  margin-top: 40px;
-}
+  gap: 8px;
 
-.clean-button {
-  display: inline-block;
-  padding: 12px 32px;
-  background-color: #66ffcc;
-  color: #0f0f0f;
+  padding: 10px 14px;
+  border-radius: 12px;
+
+  text-decoration: none;
   font-weight: 600;
-  font-size: 1rem;
-  border: none;
-  border-radius: 10px;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 12px rgba(102, 255, 204, 0.4);
+
+  transition:
+    transform       .18s ease,
+    box-shadow      .18s ease,
+    border-color    .18s ease,
+    background-color .18s ease;
 }
 
-.clean-button:hover {
-  background-color: #52e6b8;
-  box-shadow: 0 0 20px rgba(102, 255, 204, 0.6);
+/* Заполненная светящаяся кнопка */
+.btn-glow{
+  color: var(--color-text);
+  background: rgba(255,255,255,.06);
+  border: 1px solid var(--color-accent);
+  box-shadow: 0 0 18px rgba(111,240,255,.28);
+}
+.btn-glow:hover{
   transform: translateY(-2px);
+  box-shadow:
+    0 6px 26px rgba(0,0,0,.45),
+    0 0 26px rgba(111,240,255,.40);
+}
+
+/* Контурная кнопка */
+.btn-outline{
+  color: var(--color-text);
+  background: transparent;
+  border: 1px solid rgba(255,255,255,.22);
+}
+.btn-outline:hover{
+  transform: translateY(-2px);
+  border-color: var(--color-edge);
+}
+
+/* ---------- Mobile tweaks ---------- */
+@media (max-width: 719.98px){
+  .p-card__body{ padding: 20px; }
+  .p-card__actions{ padding: 20px; }
+  .p-card__title{ font-size: 18px; }
+}
+
+/* Alert */
+:root{
+  --toast-text: var(--color-text, #eaf2ff);
+  --toast-muted: var(--color-muted, #9bb0c9);
+  --toast-edge: var(--color-edge, #34f5c5);
+  --toast-accent: var(--color-accent, #6ff0ff);
+  --toast-bg: rgba(12,18,30,.85);
+  --toast-radius: 14px;
+}
+
+/* Контейнер внизу */
+.toast-container{
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-15vh);
+  display: grid;
+  gap: 10px;
+  z-index: 9999;
+  pointer-events: none; /* клики проходят сквозь */
+}
+
+/* Сам тост */
+.toast{
+  pointer-events: auto;
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  gap: 12px;
+
+  min-width: 280px;
+  max-width: min(92vw, 560px);
+  padding: 14px 16px;
+
+  color: var(--toast-text);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)),
+    var(--toast-bg);
+  border: 1px solid var(--toast-edge);
+  border-radius: var(--toast-radius);
+  box-shadow:
+    0 10px 24px rgba(0,0,0,.35),
+    0 0 26px rgba(52,245,197,.18);
+  backdrop-filter: blur(6px);
+
+  transform: translateY(16px);
+  opacity: 0;
+  animation: toast-in .35s ease forwards;
+}
+
+/* Типы */
+.toast--success{ border-color:#e62e2e; box-shadow:0 0 26px rgba(46,230,166,.22); }
+.toast--error  { border-color:#ff6b6b; box-shadow:0 0 26px rgba(255,107,107,.22); }
+.toast--info   { border-color:var(--toast-accent); }
+
+/* Текст и кнопка */
+.toast__msg{ line-height:1.5; }
+.toast__close{
+  margin-left: auto;
+  cursor: pointer;
+  border: 1px solid rgba(255,255,255,.25);
+  background: transparent;
+  color: var(--toast-text);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-weight: 600;
+  transition: transform .15s, border-color .15s, background-color .15s;
+}
+.toast__close:hover{ transform: translateY(-1px); border-color: var(--toast-edge); background: rgba(255,255,255,.06); }
+
+/* Вход/выход */
+@keyframes toast-in{
+  to{ transform: translateY(0); opacity: 1; }
+}
+@keyframes toast-out{
+  to{ transform: translateY(16px); opacity: 0; }
+}
+
+/* На узких экранах чуть шире отступ снизу */
+@media (max-width: 480px){
+  .toast-container{ bottom: 16px; }
 }
