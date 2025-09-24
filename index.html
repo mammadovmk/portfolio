@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Portfolio</title>
-      <link rel="stylesheet" href="style.css">
-      <link rel="stylesheet" href="stars.css">
+      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="css/stars.css">
       <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="2f2c2594-a255-4fc8-821e-ed2280bf58ba.png" />
+  <link rel="icon" type="image/png" href="img/2f2c2594-a255-4fc8-821e-ed2280bf58ba.png" />
   </head>
   <body>
 <canvas id="stars"></canvas>
@@ -32,24 +32,78 @@
   </section>
 
     <!-- Обо мне -->
-    <section id="about">
-    <h2>About Me</h2>
-    <div class="about-box animated-fade" style="font-family: 'Rajdhani', sans-serif;">
-    <p>Hello! My name is Max — a young and ambitious developer with over three years of experience in programming. I began my journey back in 2021 and have been passionately evolving in the field of modern digital solutions ever since.</p>
+    <section id="about" class="about-max">
+  <div class="about-max__stars" aria-hidden="true"></div>
+  <div class="about-max__container">
+    <div class="about-max__grid">
+      <!-- Intro -->
+      <article class="about-max__card about-max__card--intro">
+        <h3 class="about-max__card-title">Hello!</h3>
+        <p>
+          My name is Max — a young and ambitious developer with over three years of
+          experience in programming. I began my journey back in 2021 and have been
+          passionately evolving in the field of modern digital solutions ever since.
+        </p>
+      </article>
 
-    <p>My tech stack includes <strong>Kotlin</strong>, <strong>PHP (Laravel)</strong>, <strong>Node.js</strong>, <strong>JavaScript</strong>, and other widely-used tools. During this time, I’ve contributed to and built several projects across different domains — from gaming services and web apps to backend systems.</p>
+      <!-- Stack -->
+      <article class="about-max__card about-max__card--stack">
+        <h3 class="about-max__card-title">Tech Stack</h3>
+        <p>My tech stack includes:</p>
+        <ul class="about-max__chips">
+          <li class="chip">Kotlin</li>
+          <li class="chip">PHP (Laravel)</li>
+          <li class="chip">Node.js</li>
+          <li class="chip">JavaScript</li>
+          <li class="chip">and other tools</li>
+        </ul>
+        <p class="about-max__muted">
+          Projects across gaming services, web apps, and backend systems.
+        </p>
+      </article>
 
-    <p>What matters most to me in my work:</p>
-    <ul>
-      <li>✨ Bringing fresh ideas to life with creative solutions</li>
-      <li>🚀 Being part of ambitious projects with real growth potential</li>
-      <li>📚 Constantly expanding my skills and sharing knowledge</li>
-    </ul>
+      <!-- Focus / Values -->
+      <article class="about-max__card about-max__card--values">
+        <h3 class="about-max__card-title">What matters most</h3>
+        <ul class="about-max__list">
+          <li>Bringing fresh ideas to life with creative solutions</li>
+          <li>Being part of ambitious projects with real growth potential</li>
+          <li>Constantly expanding my skills and sharing knowledge</li>
+        </ul>
+      </article>
 
-    <p>Below, you’ll find links to my profiles and personal projects. Welcome to my digital world — where every solution is fueled by passion for technology and dedication to quality.</p>
+      <!-- Experience callout -->
+      <article class="about-max__card about-max__card--xp">
+        <div class="about-max__kpi">
+          <span class="about-max__kpi-number">3+</span>
+          <span class="about-max__kpi-label">years</span>
+        </div>
+        <div>
+          <h3 class="about-max__card-title">Hands-on Experience</h3>
+          <p>
+            Contributing to products end-to-end: from architecture and APIs to
+            polished UIs and production deployments.
+          </p>
+        </div>
+      </article>
+
+      <!-- Links / CTA -->
+      <article class="about-max__card about-max__card--links">
+        <h3 class="about-max__card-title">Explore more</h3>
+        <p>
+          Below, you’ll find links to my profiles and personal projects. Welcome to my
+          digital world — where every solution is fueled by passion for technology and
+          dedication to quality.
+        </p>
+        <div class="about-max__links">
+          <a href="links.html" class="btn-glow">🔗 Links</a>
+          <a href="projects.html" class="btn-glow">🚧 My Projects</a>
+        </div>
+      </article>
+    </div>
   </div>
-
-  </section>
+</section>
+</section>
 
 
     <!-- Time Line -->
@@ -97,7 +151,7 @@
         </div>
       </div>
     </section>
-    <script src="javascript.js"></script>
-    <script src="stars.js"></script>
+    <script src="js/javascript.js"></script>
+    <script src="js/stars.js"></script>
   </body>
   </html>
